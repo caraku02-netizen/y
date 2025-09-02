@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=1, minimum-scale=1, maximum-scale=5" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Script HTML buat Kamu</title>
+
+  <!-- Stylesheets -->
+  <link href="https://feeldreams.github.io/withyou/style.css" rel="stylesheet" type="text/css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Shippori+Antique:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet" />
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
+  <script src="https://unpkg.com/typeit@8.7.0/dist/index.umd.js"></script>
+  <script src="https://kit.fontawesome.com/4f3ce16e3e.js" crossorigin="anonymous"></script>
+
+  -->
+</head>
+<body>
+  <!-- Ganti Audio di sini -->
+  <audio src="https://raw.githubusercontent.com/caraku02-netizen/y/e2ee0301be768659ad5adb3e4bcd096a742863c5/SANDI%20-%20cover%20Hivi%20-%20siapkah%20kau%20tuk%20jatuh%20cinta%20(reff%20only).mp3" type="audio/mpeg">" class="sembunyi" autoplay loop></audio>
+
+  <div id="bodyblur">
+    <!-- Wallpaper -->
+    <img src="https://wallpapercave.com/wp/wp2779744.jpg" id="wallpaper" alt="Wallpaper" />
+    <div id="beneranblur"></div>
+  </div>
+
+  <div id="Content" style="opacity:1; margin-top:16vh;">
+    <div id="kadoIn">
+      <!-- Tombol Surat -->
+      <img src="https://feeldreams.github.io/kadoin.png" alt="Kado" />
+    </div>
+    <p id="ket">Klik Kadonya!</p>
+
+    <div class="kumpulanstiker">
+      <!-- Stiker untuk Konten -->
+      <img src="https://feeldreams.github.io/peach6.gif" id="fotostiker" alt="Stiker 1" />
+      <img src="https://feeldreams.github.io/peach11.gif" id="fotostiker2" alt="Stiker 2" />
+      <img src="https://feeldreams.github.io/peachhug.gif" id="fotostiker3" alt="Stiker 3" />
+    </div>
+
+    <p id="halo" class="halo">Hai, Sayangku!</p>
+    <!-- Konten Pesan Setelah Aksi -->
+    <p id="halo2" class="halo sty2">Happy Anniversary Sayang, 3 tahun 4 Bulan! 🎉</p>
+    <p id="halo3" class="halo sty3">Di hari yang istimewa ini, aku berharap kita selalu bersama, saling mendukung, dan terus melangkah seiring.</p>
+    <!-- Tanggal Otomatis Sesuai Hari Ini -->
+    <p id="tanggal" class="halo sty3"></p>
+
+    <!-- Konten Pesan Akhir -->
+    <p id="kalimatbawah">Aku Cinta Kamu ❤️</p>
+    <p id="kalimatbawah2" class="sembunyi">Selamat Hari Jadi, Sayang ❤️</p>
+    <p id="kalimatbawah3" class="sembunyi">Aku Selalu Sayang Kamu ❤️</p>
+
+    <div>
+      <blockquote id="bq" data-text="&#9829;">
+        <!-- Konten Pembukaan -->
+        <p id="kalimat">Aku cuma mau bilang....</p>
+        <p id="kalimatb">Terima kasih udah selalu ada dan bertahan sama aku 🤗</p>
+        <p id="kalimatc">Terima kasih juga sudah terima aku apa adanya 🥰</p>
+        <p id="kalimatd">Meski kadang kita sering beda pendapat,</p>
+        <p id="kalimate">Aku tetap cinta kamu sepenuh hati 😍</p>
+        <p id="kalimatf">klik LOVE di sebelah kiri ya!</p>
+
+        <p id="opsL">Klik untuk melanjutkan</p>
+      </blockquote>
+    </div>
+
+    <!-- Tombol Kirim Pesan -->
+    <div id="Tombol"><a id="By" href="#">&#128140; Balas</a></div>
+
+    <!-- Pesan yang dikirim ke WhatsApp -->
+    <span id="pesanWA" class="sembunyi">Aww, Happy Anniversary too!</span>
+  </div>
+
+  <!-- Jangan Edit Bagian Ini -->
+  <script>
+    const body = document.querySelector("body");
+    const halo = document.getElementById("halo");
+    const halo2 = document.getElementById("halo2");
+    const pesanWA = document.getElementById("pesanWA");
+    const tanggal = document.getElementById("tanggal");
+    const fotostiker = document.getElementById("fotostiker");
+    const Content = document.getElementById("Content");
+    const linkmp3 = document.querySelector("audio");
+
+    // Tanggal otomatis
+    const todayDate = new Date();
+    const dd = String(todayDate.getDate()).padStart(2, "0");
+    const monthNames = [
+      "Januari",
+      "Februari",
+      "Maret",
+      "April",
+      "Mei",
+      "Juni",
+      "Juli",
+      "Agustus",
+      "September",
+      "Oktober",
+      "November",
+      "Desember",
+    ];
+    const yyyy = todayDate.getFullYear();
+    const today = `${dd} ${monthNames[todayDate.getMonth()]} ${yyyy}`;
+    tanggal.textContent = `- ${today} -`;
+
+    // Inisialisasi variabel
+    let inikuis = 0,
+      ftganti = 0,
+      flag = 1,
+      flagg = 1,
+      fungsi = 0,
+      ftfungsi = 0,
+      fungsiAwal = 0,
+      fungsitimer = 0;
+
+    const vketikhalo = halo.innerHTML;
+    halo.innerHTML = "";
+    const vketikhalo2 = halo2.innerHTML;
+    halo2.innerHTML = "";
+    const pesanwhatsapp = pesanWA.innerHTML;
+    const deffotostiker = fotostiker.src;
+
+    Content.style.opacity = "1";
+    Content.style.marginTop = "16vh";
+
+    // Audio play
+    const audio = new Audio(linkmp3.src);
+    audio.play();
+
+    // Fungsi membuat hati animasi
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "fas fa-heart";
+      heart.style.left = Math.random() * 90 + "vw";
+      heart.style.animationDuration = Math.random() * 3 + 2 + "s";
+      body.appendChild(heart);
+    }
+
+    setInterval(() => {
+      const heartArr = document.querySelectorAll(".fa-heart");
+      if (heartArr.length > 100) {
+        heartArr[0].remove();
+      }
+    }, 100);
+
+    setInterval(createHeart, 300);
+  </script>
+  <script src="https://feeldreams.github.io/withyou/script.js"></script>
+  <!-- Sampai Sini -->
+</body>
+</html>
